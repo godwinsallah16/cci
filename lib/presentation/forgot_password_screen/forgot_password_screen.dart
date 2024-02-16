@@ -1,10 +1,11 @@
-import 'bloc/forgot_password_bloc.dart';
-import 'models/forgot_password_model.dart';
 import 'package:cci_mobile/core/app_export.dart';
 import 'package:cci_mobile/core/utils/validation_functions.dart';
 import 'package:cci_mobile/widgets/custom_elevated_button.dart';
 import 'package:cci_mobile/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+
+import 'bloc/forgot_password_bloc.dart';
+import 'models/forgot_password_model.dart';
 
 // ignore_for_file: must_be_immutable
 class ForgotPasswordScreen extends StatelessWidget {
@@ -74,7 +75,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                                                 controller: emailController,
                                                 hintText: "lbl_email2".tr,
                                                 hintStyle: CustomTextStyles
-                                                    .titleMediumWhiteA700,
+                                                    .titleMediumOnPrimaryContainer,
                                                 textInputAction:
                                                     TextInputAction.done,
                                                 alignment: Alignment.center,
@@ -88,7 +89,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                                                   return null;
                                                 },
                                                 contentPadding: EdgeInsets.only(
-                                                    top: 14.v, bottom: 13.v),
+                                                    top: 14.v,
+                                                    bottom: 13.v,
+                                                    left: 20.h),
                                                 borderDecoration:
                                                     TextFormFieldStyleHelper
                                                         .fillPrimary,
