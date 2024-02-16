@@ -16,8 +16,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     Emitter<RegisterState> emit,
   ) async {
     emit(state.copyWith(
-        emailSectionController: TextEditingController(),
-        passwordSectionController: TextEditingController(),
-        confirmPasswordSectionController: TextEditingController()));
+        emailController: TextEditingController(),
+        passwordController: TextEditingController(),
+        confirmpasswordController: TextEditingController()));
   }
 }
