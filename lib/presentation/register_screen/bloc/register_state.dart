@@ -5,40 +5,38 @@ part of 'register_bloc.dart';
 /// Represents the state of Register in the application.
 class RegisterState extends Equatable {
   RegisterState({
-    this.emailSectionController,
-    this.passwordSectionController,
-    this.confirmPasswordSectionController,
+    this.emailController,
+    this.passwordController,
+    this.confirmpasswordController,
     this.registerModelObj,
   });
 
-  TextEditingController? emailSectionController;
+  TextEditingController? emailController;
 
-  TextEditingController? passwordSectionController;
+  TextEditingController? passwordController;
 
-  TextEditingController? confirmPasswordSectionController;
+  TextEditingController? confirmpasswordController;
 
   RegisterModel? registerModelObj;
 
   @override
   List<Object?> get props => [
-        emailSectionController,
-        passwordSectionController,
-        confirmPasswordSectionController,
+        emailController,
+        passwordController,
+        confirmpasswordController,
         registerModelObj,
       ];
   RegisterState copyWith({
-    TextEditingController? emailSectionController,
-    TextEditingController? passwordSectionController,
-    TextEditingController? confirmPasswordSectionController,
+    TextEditingController? emailController,
+    TextEditingController? passwordController,
+    TextEditingController? confirmpasswordController,
     RegisterModel? registerModelObj,
   }) {
     return RegisterState(
-      emailSectionController:
-          emailSectionController ?? this.emailSectionController,
-      passwordSectionController:
-          passwordSectionController ?? this.passwordSectionController,
-      confirmPasswordSectionController: confirmPasswordSectionController ??
-          this.confirmPasswordSectionController,
+      emailController: emailController ?? this.emailController,
+      passwordController: passwordController ?? this.passwordController,
+      confirmpasswordController:
+          confirmpasswordController ?? this.confirmpasswordController,
       registerModelObj: registerModelObj ?? this.registerModelObj,
     );
   }

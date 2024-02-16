@@ -4,16 +4,26 @@ part of 'forgot_password_bloc.dart';
 
 /// Represents the state of ForgotPassword in the application.
 class ForgotPasswordState extends Equatable {
-  ForgotPasswordState({this.forgotPasswordModelObj});
+  ForgotPasswordState({
+    this.emailController,
+    this.forgotPasswordModelObj,
+  });
+
+  TextEditingController? emailController;
 
   ForgotPasswordModel? forgotPasswordModelObj;
 
   @override
   List<Object?> get props => [
+        emailController,
         forgotPasswordModelObj,
       ];
-  ForgotPasswordState copyWith({ForgotPasswordModel? forgotPasswordModelObj}) {
+  ForgotPasswordState copyWith({
+    TextEditingController? emailController,
+    ForgotPasswordModel? forgotPasswordModelObj,
+  }) {
     return ForgotPasswordState(
+      emailController: emailController ?? this.emailController,
       forgotPasswordModelObj:
           forgotPasswordModelObj ?? this.forgotPasswordModelObj,
     );

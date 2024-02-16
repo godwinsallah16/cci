@@ -39,13 +39,13 @@ class RegisterScreen extends StatelessWidget {
                               Text("msg_create_an_account".tr,
                                   style: CustomTextStyles.titleMediumSemiBold),
                               SizedBox(height: 14.v),
-                              _buildEmailSection(context),
+                              _buildEmail(context),
                               SizedBox(height: 12.v),
-                              _buildPasswordSection(context),
+                              _buildPassword(context),
                               SizedBox(height: 12.v),
-                              _buildConfirmPasswordSection(context),
+                              _buildConfirmpassword(context),
                               SizedBox(height: 12.v),
-                              _buildSignUpSection(context),
+                              _buildSignUp(context),
                               SizedBox(height: 21.v),
                               GestureDetector(
                                   onTap: () {
@@ -87,15 +87,15 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildEmailSection(BuildContext context) {
+  Widget _buildEmail(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 51.h, right: 43.h),
         child:
             BlocSelector<RegisterBloc, RegisterState, TextEditingController?>(
-                selector: (state) => state.emailSectionController,
-                builder: (context, emailSectionController) {
+                selector: (state) => state.emailController,
+                builder: (context, emailController) {
                   return CustomTextFormField(
-                      controller: emailSectionController,
+                      controller: emailController,
                       hintText: "lbl_email".tr,
                       textInputType: TextInputType.emailAddress,
                       validator: (value) {
@@ -109,15 +109,15 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildPasswordSection(BuildContext context) {
+  Widget _buildPassword(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 51.h, right: 43.h),
         child:
             BlocSelector<RegisterBloc, RegisterState, TextEditingController?>(
-                selector: (state) => state.passwordSectionController,
-                builder: (context, passwordSectionController) {
+                selector: (state) => state.passwordController,
+                builder: (context, passwordController) {
                   return CustomTextFormField(
-                      controller: passwordSectionController,
+                      controller: passwordController,
                       hintText: "lbl_password".tr,
                       textInputType: TextInputType.visiblePassword,
                       validator: (value) {
@@ -132,15 +132,15 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildConfirmPasswordSection(BuildContext context) {
+  Widget _buildConfirmpassword(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 51.h, right: 43.h),
         child:
             BlocSelector<RegisterBloc, RegisterState, TextEditingController?>(
-                selector: (state) => state.confirmPasswordSectionController,
-                builder: (context, confirmPasswordSectionController) {
+                selector: (state) => state.confirmpasswordController,
+                builder: (context, confirmpasswordController) {
                   return CustomTextFormField(
-                      controller: confirmPasswordSectionController,
+                      controller: confirmpasswordController,
                       hintText: "msg_confirm_password".tr,
                       textInputAction: TextInputAction.done,
                       textInputType: TextInputType.visiblePassword,
@@ -156,7 +156,7 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildSignUpSection(BuildContext context) {
+  Widget _buildSignUp(BuildContext context) {
     return CustomElevatedButton(width: 161.h, text: "lbl_sign_up".tr);
   }
 

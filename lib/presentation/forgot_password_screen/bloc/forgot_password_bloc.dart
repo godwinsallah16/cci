@@ -15,5 +15,7 @@ class ForgotPasswordBloc
   _onInitialize(
     ForgotPasswordInitialEvent event,
     Emitter<ForgotPasswordState> emit,
-  ) async {}
+  ) async {
+    emit(state.copyWith(emailController: TextEditingController()));
+  }
 }
