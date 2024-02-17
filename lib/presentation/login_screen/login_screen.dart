@@ -18,9 +18,10 @@ class LoginScreen extends StatelessWidget {
 
   static Widget builder(BuildContext context) {
     return BlocProvider<LoginBloc>(
-        create: (context) => LoginBloc(LoginState(loginModelObj: LoginModel()))
-          ..add(LoginInitialEvent()),
-        child: LoginScreen());
+      create: (context) => LoginBloc(LoginState(loginModelObj: LoginModel()))
+        ..add(LoginInitialEvent()),
+      child: LoginScreen(),
+    );
   }
 
   @override
@@ -62,19 +63,15 @@ class LoginScreen extends StatelessWidget {
                                               TextInputType.emailAddress,
                                           onChanged: (value) {
                                             context.read<LoginBloc>().add(
-                                                  EmailChangedEvent(
-                                                      email: value),
-                                                );
+                                                EmailChangedEvent(
+                                                    email: value));
                                           },
                                           contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 27.h,
-                                            vertical: 13.v,
-                                          ),
+                                              horizontal: 27.h, vertical: 13.v),
                                           borderDecoration:
                                               TextFormFieldStyleHelper
                                                   .fillPrimary,
                                           fillColor: theme.colorScheme.primary,
-                                          autofocus: true,
                                           validator: (_) {
                                             if (email.isEmpty) {
                                               return null; // No validation message when empty
@@ -105,46 +102,51 @@ class LoginScreen extends StatelessWidget {
                               ),
                               SizedBox(height: 21.v),
                               Padding(
-                                  padding:
-                                      EdgeInsets.only(left: 42.h, right: 46.h),
-                                  child: BlocBuilder<LoginBloc, LoginState>(
-                                      builder: (context, state) {
+                                padding: EdgeInsets.symmetric(horizontal: 44.h),
+                                child: BlocBuilder<LoginBloc, LoginState>(
+                                  builder: (context, state) {
+                                    if (state == null ||
+                                        state.passwordController == null) {
+                                      return CircularProgressIndicator(); // Show loading indicator or handle null state
+                                    }
+
                                     return CustomTextFormField(
-                                        controller: state.passwordController,
-                                        hintText: "lbl_password2".tr,
-                                        textInputAction: TextInputAction.done,
-                                        textInputType:
-                                            TextInputType.visiblePassword,
-                                        suffix: InkWell(
-                                          onTap: () {
-                                            context.read<LoginBloc>().add(
-                                                  ChangePasswordVisibilityEvent(
-                                                    value:
-                                                        !state.isShowPassword,
-                                                  ),
-                                                );
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.fromLTRB(
-                                                30.h, 17.v, 26.h, 17.v),
-                                            child: Icon(
-                                              state.isShowPassword
-                                                  ? Icons.visibility_sharp
-                                                  : Icons.visibility_off,
-                                            ),
+                                      controller: state.passwordController,
+                                      hintText: "lbl_password2".tr,
+                                      textInputAction: TextInputAction.done,
+                                      textInputType:
+                                          TextInputType.visiblePassword,
+                                      suffix: InkWell(
+                                        onTap: () {
+                                          context.read<LoginBloc>().add(
+                                                ChangePasswordVisibilityEvent(
+                                                  value: !state.isShowPassword,
+                                                ),
+                                              );
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              30.h, 17.v, 26.h, 17.v),
+                                          child: Icon(
+                                            state.isShowPassword
+                                                ? Icons.visibility_sharp
+                                                : Icons.visibility_off,
                                           ),
                                         ),
-                                        obscureText: !state.isShowPassword,
-                                        contentPadding: EdgeInsets.only(
-                                            left: 27.h,
-                                            top: 13.v,
-                                            bottom: 13.v),
-                                        borderDecoration:
-                                            TextFormFieldStyleHelper
-                                                .fillPrimary,
-                                        fillColor: theme.colorScheme.primary,
-                                        autofocus: false);
-                                  })),
+                                      ),
+                                      obscureText: !state.isShowPassword,
+                                      contentPadding: EdgeInsets.only(
+                                        left: 27.h,
+                                        top: 13.v,
+                                        bottom: 13.v,
+                                      ),
+                                      borderDecoration:
+                                          TextFormFieldStyleHelper.fillPrimary,
+                                      fillColor: theme.colorScheme.primary,
+                                    );
+                                  },
+                                ),
+                              ),
                               SizedBox(height: 5.v),
                               Align(
                                   alignment: Alignment.centerRight,
