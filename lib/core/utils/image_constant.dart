@@ -7,8 +7,8 @@ class ImageConstant {
       '$imagePath/img_undraw_bibliophile_re_xarc.png';
 
   // LOGIN images
-  static String imgEye = '$imagePath/img_eye.svg';
   static String googleIcon = '$imagePath/google_icon.png';
+  static String facebookIcon = '$imagePath/facebook_icon.png';
 
   // FORGOT PASSWORD images
   static String imgUndrawForgotP = '$imagePath/img_undraw_forgot_p.png';

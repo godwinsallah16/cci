@@ -42,7 +42,7 @@ class CustomTextFormField extends StatelessWidget {
 
   final FocusNode? focusNode;
 
-  final bool? autofocus;
+  final bool autofocus;
 
   final TextStyle? textStyle;
 
@@ -96,7 +96,7 @@ class CustomTextFormField extends StatelessWidget {
           controller: controller,
           onChanged: onChanged,
           focusNode: focusNode ?? FocusNode(),
-          autofocus: autofocus!,
+          autofocus: autofocus,
           style: textStyle ?? theme.textTheme.titleMedium,
           obscureText: obscureText!,
           textInputAction: textInputAction,

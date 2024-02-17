@@ -2,7 +2,6 @@ import 'package:cci_mobile/core/app_export.dart';
 import 'package:cci_mobile/domain/facebookauth/facebook_auth_helper.dart';
 import 'package:cci_mobile/domain/facebookauth/facebook_user.dart';
 import 'package:cci_mobile/domain/googleauth/google_auth_helper.dart';
-import 'package:cci_mobile/widgets/custom_elevated_button.dart';
 import 'package:cci_mobile/widgets/custom_icon_button.dart';
 import 'package:cci_mobile/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -75,6 +74,7 @@ class LoginScreen extends StatelessWidget {
                                               TextFormFieldStyleHelper
                                                   .fillPrimary,
                                           fillColor: theme.colorScheme.primary,
+                                          autofocus: true,
                                           validator: (_) {
                                             if (email.isEmpty) {
                                               return null; // No validation message when empty
@@ -142,7 +142,8 @@ class LoginScreen extends StatelessWidget {
                                         borderDecoration:
                                             TextFormFieldStyleHelper
                                                 .fillPrimary,
-                                        fillColor: theme.colorScheme.primary);
+                                        fillColor: theme.colorScheme.primary,
+                                        autofocus: false);
                                   })),
                               SizedBox(height: 5.v),
                               Align(
@@ -157,23 +158,20 @@ class LoginScreen extends StatelessWidget {
                                               style: CustomTextStyles
                                                   .titleMediumBold)))),
                               SizedBox(height: 12.v),
-                              CustomElevatedButton(
-                                  width: 161.h, text: "lbl_login".tr),
-                              SizedBox(height: 10.v),
                               Text("msg_or_continue_with".tr,
                                   style: CustomTextStyles
                                       .titleMediumOnPrimaryContainer),
-                              SizedBox(height: 6.v),
+                              SizedBox(height: 15.v),
                               Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 116.h, right: 105.h),
+                                  padding:
+                                      EdgeInsets.only(left: 80.h, right: 80.h),
                                   child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
                                         CustomIconButton(
-                                            height: 51.adaptSize,
-                                            width: 51.adaptSize,
+                                            height: 46.adaptSize,
+                                            width: 46.adaptSize,
                                             onTap: () {
                                               signInGoogleAuthentication(
                                                   context);
@@ -185,23 +183,31 @@ class LoginScreen extends StatelessWidget {
                                               height: double.maxFinite,
                                             )),
                                         Padding(
-                                            padding:
-                                                EdgeInsets.only(left: 28.h),
+                                            padding: EdgeInsets.only(top: 5.v),
                                             child: CustomIconButton(
-                                                height: 51.adaptSize,
-                                                width: 51.adaptSize,
+                                                height: 48.adaptSize,
+                                                width: 48.adaptSize,
                                                 onTap: () {
                                                   signInFaceBookAuthentication(
                                                       context);
                                                 },
-                                                child: CustomImageView())),
-                                        Spacer(),
+                                                child: CustomImageView(
+                                                  imagePath: ImageConstant
+                                                      .facebookIcon,
+                                                  width: double.maxFinite,
+                                                  height: double.maxFinite,
+                                                ))),
                                         Padding(
                                             padding: EdgeInsets.only(top: 5.v),
                                             child: CustomIconButton(
                                                 height: 46.adaptSize,
                                                 width: 46.adaptSize,
-                                                child: CustomImageView()))
+                                                child: CustomImageView(
+                                                  imagePath:
+                                                      ImageConstant.googleIcon,
+                                                  width: double.maxFinite,
+                                                  height: double.maxFinite,
+                                                )))
                                       ])),
                               SizedBox(height: 24.v),
                               Row(
