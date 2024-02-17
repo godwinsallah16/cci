@@ -1,15 +1,15 @@
-import 'bloc/login_bloc.dart';
-import 'models/login_model.dart';
 import 'package:cci_mobile/core/app_export.dart';
-import 'package:cci_mobile/core/utils/validation_functions.dart';
+import 'package:cci_mobile/domain/facebookauth/facebook_auth_helper.dart';
+import 'package:cci_mobile/domain/facebookauth/facebook_user.dart';
+import 'package:cci_mobile/domain/googleauth/google_auth_helper.dart';
 import 'package:cci_mobile/widgets/custom_elevated_button.dart';
 import 'package:cci_mobile/widgets/custom_icon_button.dart';
 import 'package:cci_mobile/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:cci_mobile/domain/googleauth/google_auth_helper.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cci_mobile/domain/facebookauth/facebook_auth_helper.dart';
-import 'package:cci_mobile/domain/facebookauth/facebook_user.dart';
+
+import 'bloc/login_bloc.dart';
+import 'models/login_model.dart';
 
 // ignore_for_file: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -42,37 +42,67 @@ class LoginScreen extends StatelessWidget {
                               _buildLoginScreen(context),
                               SizedBox(height: 20.v),
                               Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 44.h),
-                                  child: BlocSelector<LoginBloc, LoginState,
-                                          TextEditingController?>(
-                                      selector: (state) =>
-                                          state.emailController,
-                                      builder: (context, emailController) {
-                                        return CustomTextFormField(
-                                            controller: emailController,
-                                            hintText: "lbl_email2".tr,
-                                            textInputType:
-                                                TextInputType.emailAddress,
-                                            validator: (value) {
-                                              if (value == null ||
-                                                  (!isValidEmail(value,
-                                                      isRequired: true))) {
-                                                return "err_msg_please_enter_valid_email"
-                                                    .tr;
-                                              }
-                                              return null;
-                                            },
-                                            contentPadding:
-                                                EdgeInsets.symmetric(
-                                                    horizontal: 27.h,
-                                                    vertical: 13.v),
-                                            borderDecoration:
-                                                TextFormFieldStyleHelper
-                                                    .fillPrimary,
-                                            fillColor:
-                                                theme.colorScheme.primary);
-                                      })),
+                                padding: EdgeInsets.symmetric(horizontal: 44.h),
+                                child: BlocBuilder<LoginBloc, LoginState>(
+                                  builder: (context, state) {
+                                    if (state == null ||
+                                        state.emailController == null) {
+                                      return CircularProgressIndicator(); // Show loading indicator or handle null state
+                                    }
+
+                                    final email = state.emailController!.text;
+                                    final isValidEmail = state.isValidEmail;
+
+                                    return Stack(
+                                      alignment: Alignment.bottomCenter,
+                                      children: [
+                                        CustomTextFormField(
+                                          controller: state.emailController,
+                                          hintText: "lbl_email2".tr,
+                                          textInputType:
+                                              TextInputType.emailAddress,
+                                          onChanged: (value) {
+                                            context.read<LoginBloc>().add(
+                                                  EmailChangedEvent(
+                                                      email: value),
+                                                );
+                                          },
+                                          contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 27.h,
+                                            vertical: 13.v,
+                                          ),
+                                          borderDecoration:
+                                              TextFormFieldStyleHelper
+                                                  .fillPrimary,
+                                          fillColor: theme.colorScheme.primary,
+                                          validator: (_) {
+                                            if (email.isEmpty) {
+                                              return null; // No validation message when empty
+                                            }
+                                            if (!isValidEmail) {
+                                              return "err_msg_please_enter_valid_email"
+                                                  .tr;
+                                            }
+                                            return null; // Valid email
+                                          },
+                                        ),
+                                        Container(
+                                          height: 2,
+                                          width: double.infinity,
+                                          color: email.isEmpty
+                                              ? Colors
+                                                  .transparent // No indicator when empty
+                                              : isValidEmail
+                                                  ? Colors
+                                                      .green // Green when valid
+                                                  : Colors
+                                                      .red, // Red when invalid
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                              ),
                               SizedBox(height: 21.v),
                               Padding(
                                   padding:
@@ -86,32 +116,25 @@ class LoginScreen extends StatelessWidget {
                                         textInputType:
                                             TextInputType.visiblePassword,
                                         suffix: InkWell(
-                                            onTap: () {
-                                              context.read<LoginBloc>().add(
+                                          onTap: () {
+                                            context.read<LoginBloc>().add(
                                                   ChangePasswordVisibilityEvent(
-                                                      value: !state
-                                                          .isShowPassword));
-                                            },
-                                            child: Container(
-                                                margin: EdgeInsets.fromLTRB(
-                                                    30.h, 17.v, 26.h, 17.v),
-                                                child: CustomImageView(
-                                                    imagePath:
-                                                        ImageConstant.imgEye,
-                                                    height: 16.v,
-                                                    width: 25.h))),
-                                        suffixConstraints:
-                                            BoxConstraints(maxHeight: 54.v),
-                                        validator: (value) {
-                                          if (value == null ||
-                                              (!isValidPassword(value,
-                                                  isRequired: true))) {
-                                            return "err_msg_please_enter_valid_password"
-                                                .tr;
-                                          }
-                                          return null;
-                                        },
-                                        obscureText: state.isShowPassword,
+                                                    value:
+                                                        !state.isShowPassword,
+                                                  ),
+                                                );
+                                          },
+                                          child: Container(
+                                            margin: EdgeInsets.fromLTRB(
+                                                30.h, 17.v, 26.h, 17.v),
+                                            child: Icon(
+                                              state.isShowPassword
+                                                  ? Icons.visibility_sharp
+                                                  : Icons.visibility_off,
+                                            ),
+                                          ),
+                                        ),
+                                        obscureText: !state.isShowPassword,
                                         contentPadding: EdgeInsets.only(
                                             left: 27.h,
                                             top: 13.v,
@@ -155,7 +178,12 @@ class LoginScreen extends StatelessWidget {
                                               signInGoogleAuthentication(
                                                   context);
                                             },
-                                            child: CustomImageView()),
+                                            child: CustomImageView(
+                                              imagePath:
+                                                  ImageConstant.googleIcon,
+                                              width: double.maxFinite,
+                                              height: double.maxFinite,
+                                            )),
                                         Padding(
                                             padding:
                                                 EdgeInsets.only(left: 28.h),
@@ -209,7 +237,7 @@ class LoginScreen extends StatelessWidget {
                   width: 215.h,
                   alignment: Alignment.topLeft),
               CustomImageView(
-                  imagePath: ImageConstant.imgImg20240122Wa0009,
+                  imagePath: ImageConstant.churchLogo,
                   height: 324.adaptSize,
                   width: 324.adaptSize,
                   alignment: Alignment.bottomRight,

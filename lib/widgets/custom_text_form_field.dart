@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../core/app_export.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -6,6 +7,7 @@ class CustomTextFormField extends StatelessWidget {
     Key? key,
     this.alignment,
     this.width,
+    this.onChanged,
     this.scrollPadding,
     this.controller,
     this.focusNode,
@@ -74,6 +76,8 @@ class CustomTextFormField extends StatelessWidget {
 
   final FormFieldValidator<String>? validator;
 
+  final void Function(String)? onChanged;
+
   @override
   Widget build(BuildContext context) {
     return alignment != null
@@ -90,6 +94,7 @@ class CustomTextFormField extends StatelessWidget {
           scrollPadding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           controller: controller,
+          onChanged: onChanged,
           focusNode: focusNode ?? FocusNode(),
           autofocus: autofocus!,
           style: textStyle ?? theme.textTheme.titleMedium,

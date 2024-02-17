@@ -39,7 +39,7 @@ class LoginRegisterOptionScreen extends StatelessWidget {
                                       alignment: Alignment.topLeft),
                                   CustomImageView(
                                       imagePath:
-                                          ImageConstant.imgImg20240122Wa0009,
+                                          ImageConstant.churchLogo,
                                       height: 324.adaptSize,
                                       width: 324.adaptSize,
                                       alignment: Alignment.bottomRight,

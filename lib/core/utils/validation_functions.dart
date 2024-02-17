@@ -23,10 +23,10 @@ bool isValidEmail(
 
 /// Password should have,
 /// at least a upper case letter
-///  at least a lower case letter
-///  at least a digit
-///  at least a special character [@#$%^&+=]
-///  length of at least 4
+/// at least a lower case letter
+/// at least a digit
+/// at least a special character [@#$%^&+=]
+/// length of at least 8
 /// no white space allowed
 bool isValidPassword(
   String? inputString, {
