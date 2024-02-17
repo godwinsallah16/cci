@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "411617959738",
+    "project_id": "ccimobile",
+    "storage_bucket": "ccimobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411617959738:android:4dfe1c28cd3f8a7297fa03",
+        "android_client_info": {
+          "package_name": "com.ccimobile.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411617959738-1dfaqd3v794keqb9o59j3stcvvupvs4t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ccimobile.app",
+            "certificate_hash": "3e347a0f06fe8e7a1b1349b942e0c5c464163f36"
+          }
+        },
+        {
+          "client_id": "411617959738-8eq475ch7n3014a8g63tjnj95s0ouaki.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-zFQdh93AWvQdMwBoM0PoJYY9fwUNzYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411617959738-8eq475ch7n3014a8g63tjnj95s0ouaki.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "411617959738-4pij9ed3jkt3nhgf9j81m96ba3kaejp8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ccimobile.app.testProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
