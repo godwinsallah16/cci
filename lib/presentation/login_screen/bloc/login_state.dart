@@ -1,42 +1,44 @@
-// ignore_for_file: must_be_immutable
+// login_state.dart
 
 part of 'login_bloc.dart';
 
-/// Represents the state of Login in the application.
 class LoginState extends Equatable {
   LoginState({
     this.emailController,
     this.passwordController,
-    this.isShowPassword = true,
     this.loginModelObj,
+    this.isShowPassword = false,
+    this.isValidEmail = false, // Add isValidEmail property
   });
 
-  TextEditingController? emailController;
-
-  TextEditingController? passwordController;
-
-  LoginModel? loginModelObj;
-
-  bool isShowPassword;
+  final TextEditingController? emailController;
+  final TextEditingController? passwordController;
+  final LoginModel? loginModelObj;
+  final bool isShowPassword;
+  final bool isValidEmail;
 
   @override
   List<Object?> get props => [
         emailController,
         passwordController,
-        isShowPassword,
         loginModelObj,
+        isShowPassword,
+        isValidEmail,
       ];
+
   LoginState copyWith({
     TextEditingController? emailController,
     TextEditingController? passwordController,
-    bool? isShowPassword,
     LoginModel? loginModelObj,
+    bool? isShowPassword,
+    bool? isValidEmail,
   }) {
     return LoginState(
       emailController: emailController ?? this.emailController,
       passwordController: passwordController ?? this.passwordController,
-      isShowPassword: isShowPassword ?? this.isShowPassword,
       loginModelObj: loginModelObj ?? this.loginModelObj,
+      isShowPassword: isShowPassword ?? this.isShowPassword,
+      isValidEmail: isValidEmail ?? this.isValidEmail,
     );
   }
 }

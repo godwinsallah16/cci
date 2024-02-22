@@ -1,8 +1,8 @@
+import 'package:cci_mobile/core/app_export.dart';
+import 'package:flutter/material.dart';
+
 import 'bloc/intro_page_bloc.dart';
 import 'models/intro_page_model.dart';
-import 'package:cci_mobile/core/app_export.dart';
-import 'package:cci_mobile/widgets/custom_elevated_button.dart';
-import 'package:flutter/material.dart';
 
 class IntroPageScreen extends StatelessWidget {
   const IntroPageScreen({Key? key}) : super(key: key);
@@ -34,13 +34,6 @@ class IntroPageScreen extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: CustomTextStyles.titleMediumSemiBold19)),
                     SizedBox(height: 13.v),
-                    CustomElevatedButton(
-                        height: 65.v,
-                        text: "lbl_get_started".tr,
-                        margin: EdgeInsets.symmetric(horizontal: 25.h),
-                        buttonStyle: CustomButtonStyles.fillOnPrimary,
-                        buttonTextStyle: theme.textTheme.titleLarge!),
-                    SizedBox(height: 23.v),
                     CustomImageView(
                         imagePath: ImageConstant.imgUndrawBibliophileReXarc,
                         height: 242.v,
@@ -64,7 +57,7 @@ class IntroPageScreen extends StatelessWidget {
                   width: 215.h,
                   alignment: Alignment.topLeft),
               CustomImageView(
-                  imagePath: ImageConstant.imgImg20240122Wa0009,
+                  imagePath: ImageConstant.churchLogo,
                   height: 324.adaptSize,
                   width: 324.adaptSize,
                   alignment: Alignment.bottomRight)

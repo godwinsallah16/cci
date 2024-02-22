@@ -1,12 +1,34 @@
+import 'package:cci_mobile/core/app_export.dart';
 import 'package:flutter/material.dart';
-import '../core/app_export.dart';
 
-class CustomTextFormField extends StatelessWidget {
-  CustomTextFormField({
+class CustomTextFormField extends StatefulWidget {
+  final Alignment? alignment;
+  final double? width;
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final bool autofocus;
+  final TextStyle? textStyle;
+  final bool? obscureText;
+  final TextInputAction? textInputAction;
+  final TextInputType? textInputType;
+  final int? maxLines;
+  final String? hintText;
+  final TextStyle? hintStyle;
+  final Widget? prefix;
+  final BoxConstraints? prefixConstraints;
+  final Widget? suffix;
+  final BoxConstraints? suffixConstraints;
+  final EdgeInsets? contentPadding;
+  final InputBorder? borderDecoration;
+  final Color? fillColor;
+  final bool? filled;
+  final FormFieldValidator<String>? validator;
+  final void Function(String)? onChanged;
+
+  const CustomTextFormField({
     Key? key,
     this.alignment,
     this.width,
-    this.scrollPadding,
     this.controller,
     this.focusNode,
     this.autofocus = true,
@@ -26,103 +48,82 @@ class CustomTextFormField extends StatelessWidget {
     this.fillColor,
     this.filled = true,
     this.validator,
-  }) : super(
-          key: key,
-        );
+    this.onChanged,
+  }) : super(key: key);
 
-  final Alignment? alignment;
+  @override
+  _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
+}
 
-  final double? width;
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  late TextEditingController _controller;
+  late FocusNode _focusNode;
 
-  final TextEditingController? scrollPadding;
+  @override
+  void initState() {
+    super.initState();
+    _controller = widget.controller ?? TextEditingController();
+    _focusNode = widget.focusNode ?? FocusNode();
+  }
 
-  final TextEditingController? controller;
-
-  final FocusNode? focusNode;
-
-  final bool? autofocus;
-
-  final TextStyle? textStyle;
-
-  final bool? obscureText;
-
-  final TextInputAction? textInputAction;
-
-  final TextInputType? textInputType;
-
-  final int? maxLines;
-
-  final String? hintText;
-
-  final TextStyle? hintStyle;
-
-  final Widget? prefix;
-
-  final BoxConstraints? prefixConstraints;
-
-  final Widget? suffix;
-
-  final BoxConstraints? suffixConstraints;
-
-  final EdgeInsets? contentPadding;
-
-  final InputBorder? borderDecoration;
-
-  final Color? fillColor;
-
-  final bool? filled;
-
-  final FormFieldValidator<String>? validator;
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return alignment != null
+    return widget.alignment != null
         ? Align(
-            alignment: alignment ?? Alignment.center,
-            child: textFormFieldWidget(context),
+            alignment: widget.alignment ?? Alignment.center,
+            child: _buildTextFormField(),
           )
-        : textFormFieldWidget(context);
+        : _buildTextFormField();
   }
 
-  Widget textFormFieldWidget(BuildContext context) => SizedBox(
-        width: width ?? double.maxFinite,
-        child: TextFormField(
-          scrollPadding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          controller: controller,
-          focusNode: focusNode ?? FocusNode(),
-          autofocus: autofocus!,
-          style: textStyle ?? theme.textTheme.titleMedium,
-          obscureText: obscureText!,
-          textInputAction: textInputAction,
-          keyboardType: textInputType,
-          maxLines: maxLines ?? 1,
-          decoration: decoration,
-          validator: validator,
-        ),
-      );
-  InputDecoration get decoration => InputDecoration(
-        hintText: hintText ?? "",
-        hintStyle: hintStyle ?? theme.textTheme.titleMedium,
-        prefixIcon: prefix,
-        prefixIconConstraints: prefixConstraints,
-        suffixIcon: suffix,
-        suffixIconConstraints: suffixConstraints,
+  Widget _buildTextFormField() {
+    return SizedBox(
+      width: widget.width ?? double.maxFinite,
+      child: TextFormField(
+        controller: _controller,
+        onChanged: widget.onChanged,
+        focusNode: _focusNode,
+        autofocus: widget.autofocus,
+        style: widget.textStyle ?? theme.textTheme.titleMedium,
+        obscureText: widget.obscureText!,
+        textInputAction: widget.textInputAction,
+        keyboardType: widget.textInputType,
+        maxLines: widget.maxLines ?? 1,
+        decoration: _decoration,
+        validator: widget.validator,
+      ),
+    );
+  }
+
+  InputDecoration get _decoration => InputDecoration(
+        hintText: widget.hintText ?? "",
+        hintStyle: widget.hintStyle ?? theme.textTheme.titleMedium,
+        prefixIcon: widget.prefix,
+        prefixIconConstraints: widget.prefixConstraints,
+        suffixIcon: widget.suffix,
+        suffixIconConstraints: widget.suffixConstraints,
         isDense: true,
-        contentPadding: contentPadding ?? EdgeInsets.all(16.h),
-        fillColor: fillColor ?? appTheme.gray300,
-        filled: filled,
-        border: borderDecoration ??
+        contentPadding: widget.contentPadding ?? EdgeInsets.all(16.h),
+        fillColor: widget.fillColor ?? appTheme.gray300,
+        filled: widget.filled,
+        border: widget.borderDecoration ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.h),
               borderSide: BorderSide.none,
             ),
-        enabledBorder: borderDecoration ??
+        enabledBorder: widget.borderDecoration ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.h),
               borderSide: BorderSide.none,
             ),
-        focusedBorder: borderDecoration ??
+        focusedBorder: widget.borderDecoration ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.h),
               borderSide: BorderSide.none,

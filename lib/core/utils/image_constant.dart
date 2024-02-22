@@ -7,7 +7,8 @@ class ImageConstant {
       '$imagePath/img_undraw_bibliophile_re_xarc.png';
 
   // LOGIN images
-  static String imgEye = '$imagePath/img_eye.svg';
+  static String googleIcon = '$imagePath/google_icon.png';
+  static String facebookIcon = '$imagePath/facebook_icon.png';
 
   // FORGOT PASSWORD images
   static String imgUndrawForgotP = '$imagePath/img_undraw_forgot_p.png';
@@ -23,7 +24,7 @@ class ImageConstant {
   // Common images
   static String imgShapes = '$imagePath/img_shapes.png';
 
-  static String imgImg20240122Wa0009 = '$imagePath/img_img_20240122_wa0009.png';
+  static String churchLogo = '$imagePath/church_logo.png';
 
-  static String imageNotFound = 'assets/images/image_not_found.png';
+  static String imageNotFound = '$imagePath/image_not_found.png';
 }

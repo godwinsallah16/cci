@@ -15,6 +15,15 @@ class LoginInitialEvent extends LoginEvent {
   List<Object?> get props => [];
 }
 
+class EmailChangedEvent extends LoginEvent {
+  final String email;
+
+  EmailChangedEvent({required this.email});
+
+  @override
+  List<Object?> get props => [email];
+}
+
 ///Event for changing password visibility
 class ChangePasswordVisibilityEvent extends LoginEvent {
   ChangePasswordVisibilityEvent({required this.value});

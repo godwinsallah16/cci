@@ -1,0 +1,46 @@
+[debug] [2024-02-16T21:10:48.109Z] ----------------------------------------------------------------------
+[debug] [2024-02-16T21:10:48.111Z] Command:       C:\Program Files (x86)\nodejs\node.exe C:\Users\Developer\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js apps:create ios cci_mobile (macos) --bundle-id=com.ccimobile.app --json --project=ccimobile
+[debug] [2024-02-16T21:10:48.112Z] CLI Version:   13.0.1
+[debug] [2024-02-16T21:10:48.112Z] Platform:      win32
+[debug] [2024-02-16T21:10:48.112Z] Node Version:  v20.10.0
+[debug] [2024-02-16T21:10:48.112Z] Time:          Fri Feb 16 2024 21:10:48 GMT+0000 (Greenwich Mean Time)
+[debug] [2024-02-16T21:10:48.112Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-02-16T21:10:48.120Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-02-16T21:10:48.120Z] > authorizing via signed-in user (godwinsallah16@gmail.com)
+[info] Create your IOS app in project ccimobile:
+[debug] [2024-02-16T21:10:48.125Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/ccimobile/iosApps [none]
+[debug] [2024-02-16T21:10:48.125Z] >>> [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/ccimobile/iosApps {"displayName":"cci_mobile (macos)","bundleId":"com.ccimobile.app"}
+[debug] [2024-02-16T21:10:51.635Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/ccimobile/iosApps 200
+[debug] [2024-02-16T21:10:51.637Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/ccimobile/iosApps {"name":"operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl"}
+[debug] [2024-02-16T21:10:51.639Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl [none]
+[debug] [2024-02-16T21:10:52.211Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl 200
+[debug] [2024-02-16T21:10:52.211Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl {"name":"operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl"}
+[debug] [2024-02-16T21:10:52.726Z] [Create iOS app Poller] Retrying task index 0
+[debug] [2024-02-16T21:10:52.727Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl [none]
+[debug] [2024-02-16T21:10:53.249Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl 200
+[debug] [2024-02-16T21:10:53.250Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl {"name":"operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl"}
+[debug] [2024-02-16T21:10:54.262Z] [Create iOS app Poller] Retrying task index 0
+[debug] [2024-02-16T21:10:54.263Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl [none]
+[debug] [2024-02-16T21:10:54.766Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl 200
+[debug] [2024-02-16T21:10:54.766Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl {"name":"operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl"}
+[debug] [2024-02-16T21:10:56.768Z] [Create iOS app Poller] Retrying task index 0
+[debug] [2024-02-16T21:10:56.771Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl [none]
+[debug] [2024-02-16T21:10:57.252Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl 200
+[debug] [2024-02-16T21:10:57.253Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl {"name":"operations/workflows/YjczMWI2YjUtYjY5YS00OTE0LTk3ZGUtOTQ0MDg1ODdlYzRl","done":true,"response":{"@type":"type.googleapis.com/google.firebase.service.v1beta1.IosApp","name":"projects/ccimobile/iosApps/1:411617959738:ios:3e11de6bc5233f7797fa03","appId":"1:411617959738:ios:3e11de6bc5233f7797fa03","displayName":"cci_mobile (macos)","projectId":"ccimobile","bundleId":"com.ccimobile.app","apiKeyId":"3355e748-cb63-4718-aa03-7e150e8da45e","state":"ACTIVE","expireTime":"1970-01-01T00:00:00Z","etag":"1_64056ccc-35fc-4fcb-a6a1-813b49b00e87"}}
+[info] 
+[info] 🎉🎉🎉 Your Firebase IOS App is ready! 🎉🎉🎉
+[info] 
+[info] App information:
+[info]   - App ID: 1:411617959738:ios:3e11de6bc5233f7797fa03
+[info]   - Display name: cci_mobile (macos)
+[info]   - Bundle ID: com.ccimobile.app
+[info] 
+[info] You can run this command to print out your new app's Google Services config:
+[info]   firebase apps:sdkconfig IOS 1:411617959738:ios:3e11de6bc5233f7797fa03
+[debug] [2024-02-16T21:11:07.275Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\Developer\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:258:49)
+    at listOnTimeout (node:internal/timers:573:17)
+    at process.processTimers (node:internal/timers:514:7)
+[error] 
+[error] Error: An unexpected error has occurred.
